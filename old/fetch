@@ -1,0 +1,53 @@
+<?php 
+
+include_once("connections/connection.php");
+
+$con = connection();
+
+    if(isset($_POST['view'])){
+
+        $sql = "SELECT * FROM `notification` ORDER BY notif_id DESC LIMIT 5";
+        $result->query($sql) or die ($con->error);
+        $row = $result->fetch_assoc();
+
+        $output = '';
+        
+        if($result > 0)
+        {
+            while($row = mysqli_fetch_array($result))
+            {
+                $output .= '
+                <li>
+                    <a href="#">
+                        <strong>'.$row["notif_subject"].'</strong><br />
+                        <small><em>' .$row["notif_text"].'</em></small>
+                    </a>
+                
+                </li>
+
+                ';
+            }
+        }
+        else 
+        {
+            $output .='
+                <li><a href="#" class="text-bold text-italic">No notification Found></a></li>
+            ';
+
+
+        }
+            $query_1 = "SELECT * FROM `notification` WHERE notif_status=0"; // 0 = unread 1 means read notif
+            $result_1 = mysqli_query($con, $query_1);
+            $count = $mysqli_num_rows($result_1);
+            $data = array(
+                'notification'          => $output,
+                'unseen_notification'   => $count  
+            );
+
+            echo json_encode($data);
+
+
+    }
+
+
+?>
