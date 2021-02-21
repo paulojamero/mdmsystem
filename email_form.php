@@ -30,7 +30,6 @@ switch (@$_GET['do'])
       $scity = $_POST['scity'];
       $szip = $_POST['szip'];
       $fphone1 = $_POST['fphone1'];
-
       $mname = $_POST['mname'];
       $sapt = $_POST['sapt'];
       $sstate = $_POST['sstate'];
