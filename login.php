@@ -32,37 +32,29 @@
 
   }
 
-  
-  if(isset($_POST['submitRef']) && ($_SESSION['Access'] == "applicant")){
+  if(isset($_POST['submitRef'])){
+    $reference = $_POST['refUser'];
+    $passwordRef = $_POST['refPassword'];
 
-    $username = $_POST['username'];
-    $password = $_POST['password'];
+    $sqlRef = "SELECT * FROM application_accounts WHERE referenceNum = '$reference' AND referencePass = '$passwordRef' ";
 
-    $sql = "SELECT * FROM accounts WHERE username = '$username' AND password = '$password' ";
-    
-    $user = $con->query($sql) or die ($con->error); //query the statement
-    $row = $user->fetch_assoc(); //fetch data
+    $userRef = $con->query($sqlRef) or die ($con->error);
+    $rowRef = $userRef->fetch_assoc();
 
-    $total = $user->num_rows; //view row count if meron
+    $totalRef = $userRef->num_rows;
 
-    if($total > 0){   //if data is greater than 0, STORE this data
-        $_SESSION['ReferLogin'] = $row['username'];
-        $_SESSION['Access'] = $row['access'];  
-       
+    if ($totalRef > 0) {
+        $_SESSION['RefLogin'] = $rowRef['referenceNum'];
+
         echo header("Location: application_details.php");
         
-    }  else {
+    } else {
+        echo "No reference found";
+    }
 
-        echo "No Reference number found.";
-    };
-
-  }
-
-  
-
-  
-
+} 
 ?>
+
 
 
 <!DOCTYPE html>
@@ -89,16 +81,18 @@
 
 
 
-        <h1>Application Process Login</h1>
+        <h1>My Enrollment Status</h1>
     <br/>
     <br/>
  <br>
         
-        <form action="application_details.php" method="post">
+        <form action="" method="post">
          <input type="hidden" name="ID" id="id">
-         <input type="text" name="search" id="search">
+         <label>Reference Number</label>
+         <input type="text" name="refUser" id="refUsername">
+         <label>Password</label>
          <input type="text" name="refPassword" id="refPassword">
-        <button type="submit" name="submitRef">search</button>
+        <button type="submit" name="submitRef">Login</button>
     </form>
 </body>
 </html>

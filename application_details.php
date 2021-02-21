@@ -12,20 +12,15 @@
     $con = connection(); // create new variable with connection function
 
     if(isset($_SESSION['ReferLogin'])){
-        echo "Welcome"." ".$_SESSION['ReferLogin']."<br>"; 
-        echo "Account:"." ".$_SESSION['Access'];
+        echo "Welcome"." ".$_SESSION['RefLogin']."<br>"; 
+      // echo "Account:"." ".$_SESSION['Access'];
 
     }   else { 
         echo header("Location: login.php");
     };
- 
- 
-       // $sql = "SELECT * FROM student_reserve WHERE referenceNum = '$search' ";
-  
-
 
         //Displaying the data on 2 different table with same ID
-       $sql = "SELECT * FROM student_reserve WHERE id = (SELECT id FROM accounts WHERE username ='".$_SESSION['ReferLogin']."') "; 
+       $sql = "SELECT * FROM student_reserve WHERE id = (SELECT id FROM application_accounts WHERE referenceNum ='".$_SESSION['RefLogin']."') "; 
 
 
    
@@ -69,10 +64,10 @@
     <br/>
     <br/>
     <?php 
-      if (isset($_SESSION['UserLogin'])){ ?>
-         <a href="logout.php">Logout</a>
+      if (isset($_SESSION['RefLogin'])){ ?>
+         <a href="application_logout.php">Logout</a>
             <?php } else { ?>
-             <a href="login.php">Login</a>
+             <a href="application_login.php">Login</a>
         
             <?php    } ?>  
 
@@ -101,7 +96,7 @@
                     </thead>
 
                     <tbody>
-                 <?php if(isset($_SESSION['ReferLogin'])){ ?>
+                 <?php if(isset($_SESSION['RefLogin'])){ ?>
 
                         <tr>
                             <td><?php echo $row['rsFName'];  ?></td>
