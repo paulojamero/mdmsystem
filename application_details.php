@@ -1,39 +1,33 @@
 <?php 
 
-//
-    
-        session_start();
-      
+// 
+if(!isset($_SESSION)){
+    session_start();
+       
+}
 //if naka set ang userLogin / if may naka login
 
-    //
-    include_once("connections/connection.php");
-
-    $con = connection(); // create new variable with connection function
-
-    if(isset($_SESSION['ReferLogin'])){
+    if(isset($_SESSION['RefLogin'])){
         echo "Welcome"." ".$_SESSION['RefLogin']."<br>"; 
-      // echo "Account:"." ".$_SESSION['Access'];
-
+        echo "Account:"." ".$_SESSION['ApplicantType'];
+    
+    
     }   else { 
         echo header("Location: login.php");
     };
 
+  
+     include_once("connections/connection.php");
+     $con = connection(); // create new variable with connection function
+
+
         //Displaying the data on 2 different table with same ID
        $sql = "SELECT * FROM student_reserve WHERE id = (SELECT id FROM application_accounts WHERE referenceNum ='".$_SESSION['RefLogin']."') "; 
 
-
-   
          $students = $con->query($sql) or die($con->error);
      
          $row = $students->fetch_assoc();
        
-     
-
-  
-
-   
-
 //yung result ilalagay sa row
 
 ?>
@@ -67,7 +61,7 @@
       if (isset($_SESSION['RefLogin'])){ ?>
          <a href="application_logout.php">Logout</a>
             <?php } else { ?>
-             <a href="application_login.php">Login</a>
+             <a href="login.php">Login</a>
         
             <?php    } ?>  
 

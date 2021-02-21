@@ -32,9 +32,11 @@
 
   }
 
-  if(isset($_POST['submitRef'])){
+  // FOR ENROLLMENT STATUS LOGIN
+  if(isset($_POST['submitRef']) && ($_SESSION['ApplicantType'] = "applicant")){
     $reference = $_POST['refUser'];
     $passwordRef = $_POST['refPassword'];
+    
 
     $sqlRef = "SELECT * FROM application_accounts WHERE referenceNum = '$reference' AND referencePass = '$passwordRef' ";
 
@@ -45,14 +47,17 @@
 
     if ($totalRef > 0) {
         $_SESSION['RefLogin'] = $rowRef['referenceNum'];
+        $_SESSION['ApplicantType'] = $rowRef['applicantType'];
+       // $_SESSION['ApplicantStatus'] = $rowRef['status'];
 
         echo header("Location: application_details.php");
-        
-    } else {
-        echo "No reference found";
     }
+      else {
+             echo "No Application found.";
+   
 
-} 
+     }
+}       
 ?>
 
 

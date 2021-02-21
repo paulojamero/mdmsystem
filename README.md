@@ -1,7 +1,9 @@
 # mdmsystem
 
 # wip01_reservation_login 02/21/2021 
-    Logging in using reference number then viewing the details. - OK
+TODO: applicant 1 or 0. 0 means account is disabled/remove
+    Logging in using reference number then viewing the details.
+    application_details.php not accessible when not logged in by unsetting sessions
     Deleted applciation_login.php
 ####
 

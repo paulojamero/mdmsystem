@@ -169,15 +169,5 @@ $students = mysqli_query($con, $sql);
               </ul>
           </nav>
 
-
-
-
-
-
-
-
-
-
-
 </body>
 </html>
