@@ -1,4 +1,11 @@
 # mdmsystem
+
+# wip01_reservation_login 02/21/2021 
+    Logging in using reference number then viewing the details. - OK
+    Deleted applciation_login.php
+####
+
+
 LOGIN 
 CRUD
 SEARCH INFO in Master List
