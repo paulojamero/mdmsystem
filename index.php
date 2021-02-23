@@ -38,7 +38,7 @@
  $nextPage = $currentPage + 1;
  $previousPage = $currentPage - 1;
 
-$sql = "SELECT * FROM student_list LIMIT $startFrom, $showRecordPerPage";
+$sql = "SELECT * FROM student_list ORDER BY addedAt DESC LIMIT $startFrom, $showRecordPerPage";
 $students = mysqli_query($con, $sql);
 
 //yung result ilalagay sa row
@@ -92,6 +92,7 @@ $students = mysqli_query($con, $sql);
                 <th>FIRST NAME</th>
                 <th>LAST NAME</th>
                 <th>GENDER</th>
+                <th>GRADE</th>
                 
             </tr>
         </thead>
@@ -134,6 +135,7 @@ $students = mysqli_query($con, $sql);
                     <td><?php echo $stud['firstName']; ?></td>
                     <td><?php echo $stud['lastName']; ?></td>
                     <td><?php echo $stud['gender']; ?></td>
+                    <td><?php echo $stud['grade']; ?></td>
             
             </tr>
           <?php  } ?>

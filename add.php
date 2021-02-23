@@ -27,8 +27,9 @@ if(isset($_POST['submit'])){
     $fName = $_POST['firstname'];
     $lName = $_POST['lastname'];
     $gender = $_POST['gender'];
+    $grades = $_POST['grades'];
 
-    $sql = "INSERT INTO `student_list`(`firstName`, `lastName`, `gender`) VALUES ('$fName','$lName','$gender')";
+    $sql = "INSERT INTO `student_list`(`firstName`, `lastName`, `gender`, `grade`) VALUES ('$fName','$lName','$gender', '$grades')";
 
     $con->query($sql) or die ($con->error);
 
@@ -59,8 +60,10 @@ if(isset($_POST['submit'])){
         <select name="gender" id="gender">
             <option value="Male">Male</option>
             <option value="Female">Female</option>
-        
         </select>
+
+        <label>Grade Level</label>
+        <input type="text" name="grades" id="grades">
 
 
         <input type="submit" name="submit" value="Submit Form">

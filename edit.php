@@ -28,10 +28,11 @@ if(isset($_POST['submit'])){
 
     // ilagay sa isang variable
     $fName = $_POST['firstname'];
-    $lName = $_POST['lasttname'];
+    $lName = $_POST['lastname'];
     $gender = $_POST['gender'];
+    $grades = $_POST['grades'];
 
-    $sql = "UPDATE student_list SET firstName= '$fName', lastName = '$lName', gender = '$gender' WHERE id = '$id' ";
+    $sql = "UPDATE student_list SET firstName= '$fName', lastName = '$lName', gender = '$gender', grade = '$grades' WHERE id = '$id' ";
 
     $con->query($sql) or die ($con->error);
 
@@ -60,7 +61,7 @@ if(isset($_POST['submit'])){
         <input type="text" name="firstname" id="firstname" value="<?php echo $row['firstName']; ?>">
 
         <label>Last Name</label>
-        <input type="text" name="lasttname" id="lastname" value="<?php echo $row['lastName']; ?>">
+        <input type="text" name="lastname" id="lastname" value="<?php echo $row['lastName']; ?>">
 
         <label>Gender</label>
         <select name="gender" id="gender">   <!-- IF STATEMENT -- shorthand -- Good for dropdown -->
@@ -70,6 +71,8 @@ if(isset($_POST['submit'])){
             >Female</option>
         
         </select>
+        <label>Grade</label>
+        <input type="text" name="grades" id="grades" value="<?php echo $row['grade']; ?>">
 
 
         <input type="submit" name="submit" value="Update">
