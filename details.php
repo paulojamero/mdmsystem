@@ -67,6 +67,7 @@ $row = $students->fetch_assoc();
                 <th>First Name</th>
                 <th>Last Name</th>
                 <th>Gender</th>
+                <th>Grade</th>
             </tr>
         </thead>
 
@@ -75,6 +76,7 @@ $row = $students->fetch_assoc();
                 <td><?php echo $row['firstName']; ?></td>
                 <td><?php echo $row['lastName'];?></td>
                 <td><?php echo $row['gender'];?></td>
+                <td><?php echo $row['grade'];?></td>
             
             
             </tr>

@@ -88,11 +88,13 @@ $students = mysqli_query($con, $sql);
     <table>
         <thead>
             <tr>
-                <th></th>
+               
                 <th>FIRST NAME</th>
                 <th>LAST NAME</th>
                 <th>GENDER</th>
                 <th>GRADE</th>
+
+                <th>Actions</th>
                 
             </tr>
         </thead>
@@ -131,11 +133,12 @@ $students = mysqli_query($con, $sql);
             while($stud = mysqli_fetch_assoc($students)) {
             ?>
             <tr>
-                    <td><a href="details.php?ID=<?php echo $stud['id']; ?>">VIEW</a></td> <!--GET PARAMETER AS ID -->
+                  
                     <td><?php echo $stud['firstName']; ?></td>
                     <td><?php echo $stud['lastName']; ?></td>
                     <td><?php echo $stud['gender']; ?></td>
                     <td><?php echo $stud['grade']; ?></td>
+                    <td><a href="details.php?ID=<?php echo $stud['id']; ?>">VIEW</a></td> <!--GET PARAMETER AS ID -->
             
             </tr>
           <?php  } ?>

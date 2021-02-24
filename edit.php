@@ -71,8 +71,27 @@ if(isset($_POST['submit'])){
             >Female</option>
         
         </select>
-        <label>Grade</label>
-        <input type="text" name="grades" id="grades" value="<?php echo $row['grade']; ?>">
+          <label>Grade Level</label>
+        <select name="grades" id="grades">
+            <option value="na">Please Select</option>
+
+            <option value="Pre Casa" <?php echo ($row['grade'] == "Pre Casa")? 'selected' : '' ; ?>>Pre Casa</option>
+            <option value="Junior Casa" <?php echo ($row['grade'] == "Junior Casa")? 'selected' : '' ; ?>>Junior Casa</option>
+            <option value="Senior Casa"<?php echo ($row['grade'] == "Senior Casa")? 'selected' : '' ; ?>>Senior Casa</option>
+            <option value="Grade 1"<?php echo ($row['grade'] == "Grade 1")? 'selected' : '' ; ?>>Grade 1</option>
+            <option value="Grade 2"<?php echo ($row['grade'] == "Grade 2")? 'selected' : '' ; ?>>Grade 2</option>
+            <option value="Grade 3"<?php echo ($row['grade'] == "Grade 3")? 'selected' : '' ; ?>>Grade 3</option>
+            <option value="Grade 4"<?php echo ($row['grade'] == "Grade 4")? 'selected' : '' ; ?>>Grade 4</option>
+            <option value="Grade 5"<?php echo ($row['grade'] == "Grade 5")? 'selected' : '' ; ?>>Grade 5</option>
+            <option value="Grade 6"<?php echo ($row['grade'] == "Grade 6")? 'selected' : '' ; ?>>Grade 6</option>
+            <option value="Grade 7"<?php echo ($row['grade'] == "Grade 7")? 'selected' : '' ; ?>>Grade 7</option>
+            <option value="Grade 8"<?php echo ($row['grade'] == "Grade 8")? 'selected' : '' ; ?>>Grade 8</option>
+            <option value="Grade 9"<?php echo ($row['grade'] == "Grade 9")? 'selected' : '' ; ?>>Grade 9</option>
+            <option value="Grade 10"<?php echo ($row['grade'] == "Grade 10")? 'selected' : '' ; ?>>Grade 10</option>
+            <option value="Grade 11"<?php echo ($row['grade'] == "Grade 11")? 'selected' : '' ; ?>>Grade 11</option>
+            <option value="Grade 12"<?php echo ($row['grade'] == "Grade 12")? 'selected' : '' ; ?>>Grade 12</option>
+
+        </select>
 
 
         <input type="submit" name="submit" value="Update">

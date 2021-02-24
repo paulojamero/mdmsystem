@@ -63,7 +63,27 @@ if(isset($_POST['submit'])){
         </select>
 
         <label>Grade Level</label>
-        <input type="text" name="grades" id="grades">
+        <select name="grades" id="grades">
+            <option value="na">Please Select</option>
+
+            <option value="pc">Pre Casa</option>
+            <option value="jc">Junior Casa</option>
+            <option value="sc">Senior Casa</option>
+            <option value="gr1">Grade 1</option>
+            <option value="gr2">Grade 2</option>
+            <option value="gr3">Grade 3</option>
+            <option value="gr4">Grade 4</option>
+            <option value="gr5">Grade 5</option>
+            <option value="gr6">Grade 6</option>
+            <option value="gr7">Grade 7</option>
+            <option value="gr8">Grade 8</option>
+            <option value="gr9">Grade 9</option>
+            <option value="gr10">Grade 10</option>
+            <option value="gr11">Grade 11</option>
+            <option value="gr12">Grade 12</option>
+
+        </select>
+       
 
 
         <input type="submit" name="submit" value="Submit Form">
