@@ -31,8 +31,10 @@ if(isset($_POST['submit'])){
     $lName = $_POST['lastname'];
     $gender = $_POST['gender'];
     $grades = $_POST['grades'];
+    $bday = $_POST['bday'];
+    $schoolYear = $_POST['schoolYear'];
 
-    $sql = "UPDATE student_list SET firstName= '$fName', lastName = '$lName', gender = '$gender', grade = '$grades' WHERE id = '$id' ";
+    $sql = "UPDATE student_list SET firstName= '$fName', lastName = '$lName', gender = '$gender', grade = '$grades', birthDay= '$bday', school_year='$schoolYear' WHERE id = '$id' ";
 
     $con->query($sql) or die ($con->error);
 
@@ -93,10 +95,16 @@ if(isset($_POST['submit'])){
 
         </select>
 
+            <label>Birthday</label>
+            <input type="date" name="bday" value="<?php echo $row['birthDay']; ?> ">
+
+
+            <label>School Year</label>
+            <input type="text" name="schoolYear" value="<?php echo $row['school_year'] ?>" disabled="yes">
+
+
 
         <input type="submit" name="submit" value="Update">
-    
-    
     </form>
   
 

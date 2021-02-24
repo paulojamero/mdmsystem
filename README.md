@@ -1,6 +1,10 @@
 # mdmsystem
 
 # wip_informations 02/24/2021
+    Added Birthday and School Year Rows to: 
+        -Details.php
+        -Edit.php
+
     Fetch grade level in dropdown list when editing.
     
 
