@@ -96,19 +96,29 @@ if(isset($_POST['submit'])){
         </select>
 
             <label>Birthday</label>
-            <input type="date" name="bday" value="<?php echo $row['birthDay']; ?> ">
+            <input type="date" name="bday" value="<?php echo ($row['birthDay'])? 'selected': '' ; ?> ">
 
 
             <label>School Year</label>
-            <input type="text" name="schoolYear" value="<?php echo $row['school_year'] ?>" disabled="yes">
-
+            <select name="schoolYear" id="schoolYear">
+                <option value="2018-2019" <?php echo ($row['school_year'] == "2018-2019")? 'selected' : '' ; ?>>2018-2019</option>
+                <option value="2019-2020"<?php echo ($row['school_year'] == "2019-2020")? 'selected' : '' ; ?>>2019-2020</option>
+                <option value="2020-2021"<?php echo ($row['school_year'] == "2020-2021")? 'selected' : '' ; ?>>2020-2021</option>
+                <option value="2021-2022"<?php echo ($row['school_year'] == "2021-2022")? 'selected' : '' ; ?>>2021-2022</option>
+            </select>
 
 
         <input type="submit" name="submit" value="Update">
+        
     </form>
-  
+    
+    
+    <?php 
+    $date = strtotime($bday);
 
+    echo date("j F Y", $date);
 
+    ?>
 
 
 
