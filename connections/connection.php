@@ -5,7 +5,7 @@ function connection(){
     
         $host = "127.0.0.1";
         $username = "root";
-        $password = "";
+        $password = "12345";
         $database = "mdmdb";
 		$dbport ="";
 
