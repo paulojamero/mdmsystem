@@ -123,6 +123,7 @@ $q=mysqli_query($con, $sql);
                 <th>GENDER</th>
                 <th>GRADE</th>
                 <th>School Year</th>
+                <th>Image</th>
                 <th>Actions</th>
                 
             </tr>
@@ -168,6 +169,7 @@ $q=mysqli_query($con, $sql);
                     <td><?php echo $stud['gender']; ?></td>
                     <td><?php echo $stud['grade']; ?></td>
                     <td><?php echo $stud['school_year']; ?></td>
+                    <td><?php echo $stud['image']; ?></td>
                     <td><a href="details.php?ID=<?php echo $stud['id']; ?>">VIEW</a></td> <!--GET PARAMETER AS ID -->
             
             </tr>

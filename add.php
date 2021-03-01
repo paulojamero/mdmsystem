@@ -21,8 +21,16 @@
 
     $con = connection(); // create new variable with connection function
 
+
+
+   
 if(isset($_POST['submit'])){
 
+    $filename = $_FILES["uploadImage"]["name"];
+    $tempname = $_FILES["uploadImage"]["tmp_name"];
+    $folder = "uploads/" . $filename;
+
+ 
     // ilagay sa isang variable
     $fName = $_POST['firstname'];
     $lName = $_POST['lastname'];
@@ -30,13 +38,22 @@ if(isset($_POST['submit'])){
     $grades = $_POST['grades'];
     $bday = $_POST['bday'];
     $schoolYear = $_POST['schoolYear'];
+//image
+   
 
-    $sql = "INSERT INTO `student_list`(`firstName`, `lastName`, `gender`, `grade`, `birthDay`, `school_year`) VALUES ('$fName','$lName','$gender', '$grades', '$bday', '$schoolYear')";
+    $sql = "INSERT INTO `student_list`(`firstName`, `lastName`, `gender`, `grade`, `birthDay`, `school_year`,`image`) VALUES ('$fName','$lName','$gender', '$grades', '$bday', '$schoolYear', '$filename')";
 
     $con->query($sql) or die ($con->error);
-
     echo header("Location:index.php");
-}
+    if (move_uploaded_file($tempname, $folder))  { 
+        $msg = "Image uploaded successfully"; 
+    }else{ 
+        $msg = "Failed to upload image"; 
+  } 
+} 
+$result = mysqli_query($con,"SELECT * FROM image"); 
+   
+
 ?>
 
 
@@ -51,7 +68,7 @@ if(isset($_POST['submit'])){
 </head>
 <body>
 
-    <form action="" method="post">
+    <form action="" method="post" enctype="multipart/form-data">
         <label>First Name</label>
         <input type="text" name="firstname" id="firstname">
 
@@ -100,6 +117,9 @@ if(isset($_POST['submit'])){
             <option value="2019-2020">2019-2020</option>
         
         </select>
+
+        <label>Upload Image</label>
+        <input type="file" name="uploadImage" value=" " />
 
 
 

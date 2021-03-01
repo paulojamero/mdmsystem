@@ -51,6 +51,7 @@
     </form>
 
 
+    <a href="index.php"><-Back</a>
 
     <?php 
         if (isset($_SESSION['UserLogin'])){ ?>
@@ -64,11 +65,13 @@
     <table>
         <thead>
             <tr>
-                <th></th>
+                
                 <th>FIRST NAME</th>
                 <th>LAST NAME</th>
                 <th>GENDER</th>
+                <th>GRADE</th>
                 <th>School Year</th>
+                <th></th>
                 
             </tr>
         </thead>
@@ -76,11 +79,15 @@
         <tbody> <!-- DISPLAY DATA ON TABLE -->
             <?php do { ?>
             <tr>
-                <td><a href="details.php?ID=<?php echo $row['id']; ?>">VIEW</a></td> <!--GET PARAMETER AS ID -->
+     
                 <td><?php echo $row['firstName']; ?></td>
                 <td><?php echo $row['lastName']; ?></td>
                 <td><?php echo $row['gender']; ?></td>
+                <td><?php echo $row['grade']; ?></td>
                 <td><?php echo $row['school_year']; ?></td>
+
+
+                <td><a href="details.php?ID=<?php echo $row['id']; ?>">VIEW</a></td> <!--GET PARAMETER AS ID -->
             </tr>
             <?php } while ($row = $students->fetch_assoc()); ?>
 
