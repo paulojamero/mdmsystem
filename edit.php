@@ -33,6 +33,7 @@ if(isset($_POST['submit'])){
     $grades = $_POST['grades'];
     $bday = $_POST['bday'];
     $schoolYear = $_POST['schoolYear'];
+    
 
     $sql = "UPDATE student_list SET firstName= '$fName', lastName = '$lName', gender = '$gender', grade = '$grades', birthDay= '$bday', school_year='$schoolYear' WHERE id = '$id' ";
 
@@ -96,7 +97,9 @@ if(isset($_POST['submit'])){
         </select>
 
             <label>Birthday</label>
-            <input type="date" name="bday" value="<?php echo ($row['birthDay'])? 'selected': '' ; ?> ">
+             <input type="date" class="m-wrap" name="bday" value="<?php echo strftime('%Y-%m-%d',
+  strtotime($row['birthDay'])); ?>">
+            
 
 
             <label>School Year</label>
@@ -113,13 +116,7 @@ if(isset($_POST['submit'])){
     </form>
     
     
-    <?php 
-    $date = strtotime($bday);
-
-    echo date("j F Y", $date);
-
-    ?>
-
+  
 
 
 

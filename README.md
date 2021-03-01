@@ -1,5 +1,8 @@
 # mdmsystem
 
+# master 2/27/2021
+    Can now view date in html datetime picker (Birthday)
+
 # wip_informations 02/24/2021
     Added Birthday and School Year Rows to: 
         -Details.php
