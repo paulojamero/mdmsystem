@@ -20,7 +20,8 @@
 
     $con = connection(); // create new variable with connection function
     $search = $_GET['search']; // SEARCH Variable
-    $sql = "SELECT * FROM student_list WHERE firstName LIKE '%$search%' || lastName LIKE '%$search%' ORDER BY id DESC";  // % sa hulihan at unahan ng $search = contain yung word na nasearch
+    $sySearch = $_GET['schoolYear'];
+    $sql = "SELECT * FROM student_list WHERE school_year LIKE '%$sySearch%' AND (firstName LIKE '%$search%' || lastName LIKE '%$search%') ORDER BY id DESC";  // % sa hulihan at unahan ng $search = contain yung word na nasearch
     $students = $con->query($sql) or die ($con->error);
 
     //yung result ilalagay sa row
@@ -67,6 +68,7 @@
                 <th>FIRST NAME</th>
                 <th>LAST NAME</th>
                 <th>GENDER</th>
+                <th>School Year</th>
                 
             </tr>
         </thead>
@@ -78,6 +80,7 @@
                 <td><?php echo $row['firstName']; ?></td>
                 <td><?php echo $row['lastName']; ?></td>
                 <td><?php echo $row['gender']; ?></td>
+                <td><?php echo $row['school_year']; ?></td>
             </tr>
             <?php } while ($row = $students->fetch_assoc()); ?>
 

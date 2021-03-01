@@ -3,6 +3,7 @@
 # wip_images
 
     other: Populate dropdown list (School Year) with database column details
+        Can now search by school year
 # master 2/27/2021
     Can now view date in html datetime picker (Birthday)
 

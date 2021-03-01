@@ -75,27 +75,33 @@ $q=mysqli_query($con, $sql);
     <!-- SEARCH -->
     <form action="result.php" class="get">
      <input type="text" name="search" id="search">
+
+     School Year <?php
+                                  
+                                  $sql = "SELECT DISTINCT school_year FROM student_list ";
+                                  $result = $con->query($sql);
+
+                                  $total = $result->num_rows;
+
+                                  if ($total > 0) {
+                                      echo "<select name='schoolYear'>";
+                                      // output data of each row
+                                      while($row = $result->fetch_assoc()) {
+                                        echo "<option value='" . $row['school_year'] . "'>" . $row['school_year'];  "</option>";
+                                      }
+                                      echo "</select>";
+                                  } 
+                                  ?>
+                        
+
+
+
+
         <button type="submit">search</button>
     </form>
 
-    <div class="form-group">
-                                    School Year <?php
-                                  
-                                    $sql = "SELECT DISTINCT school_year FROM student_list ";
-                                    $result = $con->query($sql);
-
-                                    $total = $result->num_rows;
-
-                                    if ($total > 0) {
-                                        echo "<select name='school_year'>";
-                                        // output data of each row
-                                        while($row = $result->fetch_assoc()) {
-                                          echo "<option value='" . $row['school_year'] . "'>" . $row['school_year'];  "</option>";
-                                        }
-                                        echo "</select>";
-                                    } 
-                                    ?>
-                                </div>
+   
+                                   
        
 
     <?php 
