@@ -43,6 +43,10 @@ $students = mysqli_query($con, $sql);
 
 //yung result ilalagay sa row
 
+//School year QUERY
+$sql="SELECT school_year from student_list";
+$q=mysqli_query($con, $sql);
+
 ?>
 
 
@@ -74,6 +78,25 @@ $students = mysqli_query($con, $sql);
         <button type="submit">search</button>
     </form>
 
+    <div class="form-group">
+                                    School Year <?php
+                                  
+                                    $sql = "SELECT DISTINCT school_year FROM student_list ";
+                                    $result = $con->query($sql);
+
+                                    $total = $result->num_rows;
+
+                                    if ($total > 0) {
+                                        echo "<select name='school_year'>";
+                                        // output data of each row
+                                        while($row = $result->fetch_assoc()) {
+                                          echo "<option value='" . $row['school_year'] . "'>" . $row['school_year'];  "</option>";
+                                        }
+                                        echo "</select>";
+                                    } 
+                                    ?>
+                                </div>
+       
 
     <?php 
       if (isset($_SESSION['UserLogin'])){ ?>
@@ -93,7 +116,7 @@ $students = mysqli_query($con, $sql);
                 <th>LAST NAME</th>
                 <th>GENDER</th>
                 <th>GRADE</th>
-
+                <th>School Year</th>
                 <th>Actions</th>
                 
             </tr>
@@ -138,6 +161,7 @@ $students = mysqli_query($con, $sql);
                     <td><?php echo $stud['lastName']; ?></td>
                     <td><?php echo $stud['gender']; ?></td>
                     <td><?php echo $stud['grade']; ?></td>
+                    <td><?php echo $stud['school_year']; ?></td>
                     <td><a href="details.php?ID=<?php echo $stud['id']; ?>">VIEW</a></td> <!--GET PARAMETER AS ID -->
             
             </tr>
