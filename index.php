@@ -60,66 +60,62 @@ $q=mysqli_query($con, $sql);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Student Management System</title>
-    <link rel="stylesheet" href="css/style.css">
-
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
-
-
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+  
 </head>
 <body>
+<div class="jumbotron jumbotron-fluid">
+<div class="container">
 
+<?php 
+      if (isset($_SESSION['UserLogin'])){ ?>
+         <a href="logout.php" class="btn btn-danger">Logout</a>
+            <?php } else { ?>
+             <a href="login.php" class="btn btn-primary">Login</a>
+        
+            <?php    } ?>  
     <h1>Student Management System</h1>
     <h3>Master List</h3>
-    <br/>
-    <br/>
-    <!-- SEARCH -->
-    <form action="result.php" class="get">
+
+   <!-- SEARCH -->
+   <form action="result.php" class="get">
      <input type="text" name="search" id="search">
+
 
      School Year <?php
                                   
-                                  $sql = "SELECT DISTINCT school_year FROM student_list ";
-                                  $result = $con->query($sql);
+       $sql = "SELECT DISTINCT school_year FROM student_list ";
+       $result = $con->query($sql);
 
-                                  $total = $result->num_rows;
+       $total = $result->num_rows;
 
-                                  if ($total > 0) {
-                                      echo "<select name='schoolYear'>";
-                                      // output data of each row
-                                      while($row = $result->fetch_assoc()) {
-                                        echo "<option value='" . $row['school_year'] . "'>" . $row['school_year'];  "</option>";
-                                      }
-                                      echo "</select>";
-                                  } 
-                                  ?>
-                        
+       if ($total > 0) {
+    
+       echo "<select name='schoolYear'>";
+        // output data of each row
 
+       while($row = $result->fetch_assoc()) {
+        echo "<option value='" . $row['school_year'] . "'>" . $row['school_year'];  "</option>";
+        }
+      echo "</select>";
+      } 
+       ?>
 
-
-
-        <button type="submit">search</button>
+        <button type="submit" class="btn btn-primary">search</button>
     </form>
 
-   
-                                   
-       
+    
 
-    <?php 
-      if (isset($_SESSION['UserLogin'])){ ?>
-         <a href="logout.php">Logout</a>
-            <?php } else { ?>
-             <a href="login.php">Login</a>
-        
-            <?php    } ?>  
+    <a href="add.php" class="btn btn-primary">Add New</a>
+    <a href="reserve.php" class="btn btn-info">View Reserve</a>
+    </div>
+    </div>
+ 
 
-    <a href="add.php">Add New</a>
-    <a href="reserve.php">View Reserve</a>
-    <table>
-        <thead>
+  
+  <div class="container">
+    <table class="table table-hover">
+        <thead class="thead-dark">
             <tr>
                
                 <th>FIRST NAME</th>
@@ -134,7 +130,7 @@ $q=mysqli_query($con, $sql);
         </thead>
                          <!-- PAGINATION -->
                          <nav aria-label="Page navigation">
-              <ul class="pagination">
+              <ul class="pagination justify-content-center " style="margin:20px 0">
                 <?php if($currentPage != $firstPage) {   ?>
                   <li class="page-item">
                       <a class="page-link" href="?page=<?php $firstPage?>" tabindex="-1" aria-label="Previous"> 
@@ -175,17 +171,21 @@ $q=mysqli_query($con, $sql);
                     <td><?php echo $stud['gender']; ?></td>
                     <td><?php echo $stud['grade']; ?></td>
                     <td><?php echo $stud['school_year']; ?></td>
-                    <td> <img src='<?php echo $image_src; ?>' height="30px" width="30px";> </td>
+                    <td> <img src='<?php echo $image_src; ?>' class="img-fluid" height="30px" width="30px";> </td>
                     <td><a href="details.php?ID=<?php echo $stud['id']; ?>">VIEW</a></td> <!--GET PARAMETER AS ID -->
             
             </tr>
+            
           <?php  } ?>
         
         </tbody>
     </table>
+
+
+    </div>
                             <!-- PAGINATION -->
     <nav aria-label="Page navigation">
-              <ul class="pagination">
+              <ul class="pagination justify-content-center" style="margin:20px 0">
                 <?php if($currentPage != $firstPage) {   ?>
                   <li class="page-item">
                       <a class="page-link" href="?page=<?php $firstPage?>" tabindex="-1" aria-label="Previous"> 
@@ -212,5 +212,10 @@ $q=mysqli_query($con, $sql);
               </ul>
           </nav>
 
+
+
+          <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous"></script>
 </body>
 </html>

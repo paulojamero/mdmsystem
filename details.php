@@ -29,7 +29,9 @@ $students = $con->query($sql) or die ($con->error);
 //yung result ilalagay sa row
 $row = $students->fetch_assoc();
 
-
+//image
+$image = $row['image_name'];
+$image_src = "uploads/".$image;
 
 
 
@@ -74,6 +76,7 @@ $row = $students->fetch_assoc();
                 <th>Grade</th>
                 <th>Birthday</th>
                 <th>School Year</th>
+                <th>Image</th>
             </tr>
         </thead>
 
@@ -85,6 +88,9 @@ $row = $students->fetch_assoc();
                 <td><?php echo $row['grade'];?></td>
                 <td><?php echo $row['birthDay'];?></td>
                 <td><?php echo $row['school_year'];?></td>
+
+                
+                <td><img src='<?php echo $image_src; ?>' height="50px" width="50px";> </td>
             
             
             </tr>

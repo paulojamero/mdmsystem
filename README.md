@@ -1,6 +1,7 @@
 # mdmsystem
 
-# wip_images
+# wip_images 3/2/2021
+    Can view images in master list.
 
     other: Populate dropdown list (School Year) with database column details
         Can now search by school year
