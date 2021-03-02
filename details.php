@@ -29,6 +29,10 @@ $students = $con->query($sql) or die ($con->error);
 //yung result ilalagay sa row
 $row = $students->fetch_assoc();
 
+
+
+
+
 ?>
 
 

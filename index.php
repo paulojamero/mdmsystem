@@ -41,11 +41,15 @@
 $sql = "SELECT * FROM student_list ORDER BY addedAt DESC LIMIT $startFrom, $showRecordPerPage";
 $students = mysqli_query($con, $sql);
 
+
+
+
 //yung result ilalagay sa row
 
 //School year QUERY
 $sql="SELECT school_year from student_list";
 $q=mysqli_query($con, $sql);
+
 
 ?>
 
@@ -161,6 +165,8 @@ $q=mysqli_query($con, $sql);
           
           <?php 
             while($stud = mysqli_fetch_assoc($students)) {
+              $image = $stud['image_name'];
+              $image_src = "uploads/".$image;
             ?>
             <tr>
                   
@@ -169,7 +175,7 @@ $q=mysqli_query($con, $sql);
                     <td><?php echo $stud['gender']; ?></td>
                     <td><?php echo $stud['grade']; ?></td>
                     <td><?php echo $stud['school_year']; ?></td>
-                    <td><?php echo $stud['image']; ?></td>
+                    <td> <img src='<?php echo $image_src; ?>' height="30px" width="30px";> </td>
                     <td><a href="details.php?ID=<?php echo $stud['id']; ?>">VIEW</a></td> <!--GET PARAMETER AS ID -->
             
             </tr>

@@ -26,10 +26,24 @@
    
 if(isset($_POST['submit'])){
 
-    $filename = $_FILES["uploadImage"]["name"];
-    $tempname = $_FILES["uploadImage"]["tmp_name"];
-    $folder = "uploads/" . $filename;
+   //INSERT IMAGE
+   $image_name = $_FILES['uploadImage']['name'];
+   $target_dir = "uploads/";
+   $target_file = $target_dir . basename($_FILES["uploadImage"]["name"]);
+ 
+   // Select file type
+   $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+ 
+   // Valid file extensions
+   $extensions_arr = array("jpg","jpeg","png","gif");
+ 
+   // Check extension
+   if( in_array($imageFileType,$extensions_arr) ){
 
+
+
+    
+//
  
     // ilagay sa isang variable
     $fName = $_POST['firstname'];
@@ -38,18 +52,20 @@ if(isset($_POST['submit'])){
     $grades = $_POST['grades'];
     $bday = $_POST['bday'];
     $schoolYear = $_POST['schoolYear'];
-//image
+
    
 
-    $sql = "INSERT INTO `student_list`(`firstName`, `lastName`, `gender`, `grade`, `birthDay`, `school_year`,`image`) VALUES ('$fName','$lName','$gender', '$grades', '$bday', '$schoolYear', '$filename')";
+    $sql = "INSERT INTO `student_list`(`firstName`, `lastName`, `gender`, `grade`, `birthDay`, `school_year`,`image_name`) VALUES ('$fName','$lName','$gender', '$grades', '$bday', '$schoolYear', '$image_name' )";
 
     $con->query($sql) or die ($con->error);
+
+     // Upload file
+     move_uploaded_file($_FILES['file']['tmp_name'],$target_dir.$image_name);
+
+
+
     echo header("Location:index.php");
-    if (move_uploaded_file($tempname, $folder))  { 
-        $msg = "Image uploaded successfully"; 
-    }else{ 
-        $msg = "Failed to upload image"; 
-  } 
+   }
 } 
 $result = mysqli_query($con,"SELECT * FROM image"); 
    
