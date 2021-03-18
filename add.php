@@ -62,8 +62,6 @@ if(isset($_POST['submit'])){
      // Upload file
      move_uploaded_file($_FILES['file']['tmp_name'],$target_dir.$image_name);
 
-
-
     echo header("Location:index.php");
    }
 } 
@@ -80,8 +78,8 @@ $result = mysqli_query($con,"SELECT * FROM image");
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Student Management System</title>
     <link rel="stylesheet" href="css/style.css">
-
 </head>
+
 <body>
 
     <form action="" method="post" enctype="multipart/form-data">
@@ -128,6 +126,7 @@ $result = mysqli_query($con,"SELECT * FROM image");
         <!---  <input type="hidden" name="schoolYear" value="2021-2022">  CHANGE SCHOOL YEAR -->
         <label>School Year</label>
         <select name="schoolYear">
+            <option value="2022-2023">2022-2023</option>
             <option value="2021-2022">2021-2022</option>
             <option value="2020-2021">2020-2021</option>
             <option value="2019-2020">2019-2020</option>
